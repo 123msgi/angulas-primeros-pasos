@@ -1,0 +1,33 @@
+<h3>Listado de Heroes</h3>
+<!--Se crea un div para poner un ngIg y de esta manera
+evaluar si utiliza el metodo de borrar heroe, para que
+de esta manera solo muestre el mensaje de borrar cuando se
+elimine un hero, se utiliza el else para evaluar el
+contenido del otro mensaje-->
+<div *ngIf="deleteHero; else nothingWasDeleted">
+  <h3>Héroe borrado: <small class="text-danger">{{ deleteHero }}</small></h3>
+</div>
+<!--Se utiliza una opción de Angular para crear como un div
+que no se va a mostrar sino hasta cuando se le indique se
+muestre, en este caso con el else en el ngIf, se utiliza
+ng-template, adicional se realiza el proceso de referencia
+local para que de esta manera muestre lo que esta dentro
+del ng-temlate-->
+<ng-template #nothingWasDeleted>
+  <h3>NO ha borrado nada.</h3>
+</ng-template>
+
+<!--En el button se le agrega el metodo creado en el component
+y se pone el ngIf para que de esta manera cuando se borre el
+ultimo elemento del array se borre el boton-->
+<button
+*ngIf="heroNames.length > 0"
+(click)="removeLastHero()"
+class="btn btn-outline-danger">
+  Borrar último hero
+</button>
+
+<ul class="mt2 list-group">
+  <li *ngFor="let name of heroNames"
+       class="list-group-item">{{ name }} </li>
+</ul>
