@@ -1,0 +1,52 @@
+<h4>Listado</h4>
+      <ul class="list-group">
+      <!--
+        Con el *ngFor se hace para que recorra un array por eso
+        se pone let que se le asigna a una variable y el of de que
+        array se tiene que tomar, despues utilizamos el ; para asiganar
+        una varibale index y de esta manera poder obtener el numero de
+        cada objeto.
+        Se pude utilizar como metodos que tiene el *ngFor en angular que
+        son los siguientes:
+        isFirst = El primero
+        isLast = El ultimo
+        isEven = Si es par
+        isOdd = Si es impar
+
+        Se Utiliza el ngClass para poder agregar propiedades de css o de
+        boostrap
+      -->
+        <li *ngFor="
+        let character of characterList;
+        let i = index;
+        let isFirst = first;
+        let isLast = last;
+        let isEven = even;
+        let isOdd = odd;
+        "
+
+          class="list-group-item d-flex justifycontent-between align-items-center"
+
+          [ngClass]="{
+            'list-group-item-dark': isLast,
+            'list-group-item-primary': isEven
+          }">
+        <div>
+          <span class="text-primary"> {{ i + 1 }}. </span>
+          <span>{{ character.name }} - </span>
+          <strong>Power:  </strong>
+          <span>{{ character.power }}</span>
+        </div>
+
+
+          <button (click)="onDeleteCharacter( character.id )" class="btn btn-danger"> X </button>
+<!--
+  Se comenta esta parte donde se utilizan como los metodos edl ngFor
+  por temas de la clase, ya que no se va a utilizar
+          <span> Es el primero: {{ isFirst }} </span>
+          <span> Es el ultimo: {{ isLast }} </span>
+          <span> Es par: {{ isEven }} </span>
+          <span> Es impar: {{ isOdd }} </span>
+-->
+        </li>
+      </ul>

@@ -1,0 +1,35 @@
+<h1>DBZ Personajes</h1>
+<hr>
+<!--
+  Se crean dos div donde se pone primero las clase row de las filas
+  y despues las clase de col de las columnas, estas clases son especificas
+  de boostrap
+-->
+<div class="row">
+    <div class="col">
+<!--Aca en esta parte se manda la lista a la parte del
+    list.component y se pone que lo traiga de la clase characterList
+    que es a donde se tiene que enviar esta lista por el decorador
+    @Input este utiliza []y se pone que tiene que ser igual a
+    characters que es el que esta en main.page.component.ts es que
+    donde se pone la información
+  -->
+  <!--
+    Se pone dentro del list el metodo para eliminar por id
+  -->
+      <app-dbz-list [characterList]="characters"
+                    (onDelete)="onDeleteCharacter($event)"></app-dbz-list>
+
+    </div>
+
+    <div class="col">
+<!--
+   Para el caso del @Output que se requiere escuchar la emisión se poner
+   con ()
+   Con esta parte lo que hace es que despues de que emite lo guarda
+   en main.page.components.ts
+-->
+      <app-dbz-add-character (onNewCharacter)="onNewCharacter($event)"></app-dbz-add-character>
+    </div>
+
+</div>

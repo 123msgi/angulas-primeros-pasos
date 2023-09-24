@@ -1,0 +1,35 @@
+<h4>Agregar personaje</h4>
+<!--
+  En esta parte lo que se hace es utilizar el ngModel para poder
+  utilizar propiedades de los formularios y de esta manera se le indica
+  que utilice la propiedad creada en character.components con la interface
+  character que tiene sus atributos ya definidos.
+  Se utiliza [(ngModel)] esto es conocido como data two algo que sirve
+  para que se conecte la parte del formulario con la de TS
+  Se tiene que utilizar la parte de name para indicar que cada input es
+  independiente
+-->
+<!--
+  Se crea el evento ngSubmit para que cuando se de click o enter dentro
+  del formulario este se recargue
+-->
+<form class="row" (ngSubmit)="emitCharacter()">
+  <input
+    type="text"
+    [(ngModel)]="character.name"
+    name="name"
+    class="form-control mb-2"
+    placeholder="Nombre">
+
+  <input
+    type="number"
+    [(ngModel)]="character.power"
+    name="power"
+    class="form-control mb-2"
+    placeholder="Poder">
+
+  <button type="submit" class="btn btn-primary" >
+    Agregar
+  </button>
+  <!--<pre>{{ character | json }}</pre>-->
+</form>
